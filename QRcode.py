@@ -38,6 +38,7 @@ print("    EMAIL:john.doe@example.com")
 print("    END:VCARD")
 print("  (Each line should not have any spaces in front.)")
 
+
 print("QR Code Size is determined by the version of code.")
 print("The higher the version, the more data it can hold.")
 print(
@@ -58,14 +59,14 @@ level_of_error_correction = 0
 
 
 print(
-    "QR Border Size\n  The border is the number of boxes (pixels) to use for the border.\n  The default is 4, which results in a wide enough border for seperation.\n  You could go very small to 1 or 0 and still get good results.\n  It depends on your application."
+    "QR Border Size\n  The border is the number of boxes (pixels) to use for the border.\n  The default is 4, which results in a wide enough border for seperation.\n  You could go very small to 1 or 0 and still get good results.\n  It depends on your application. 4 is recommended the default is 2."
 )
-border_size_i = input("Enter border size (default 4): ")
+border_size_i = input("Enter border size (default 2): ")
 try:
     border_size = int(border_size_i)
 except ValueError:
-    print("Invalid input. Using default border size (4).")
-    border_size = 4
+    print("Invalid input. Using default border size (2).")
+    border_size = 2
 
 print(
     "QR Icons\n  If you want to place a small icon in the center of the QR code then,\n  use a higher level of error correction.\n  This will give you redundancy in the QR code.\n  Allowing the center to be 'destroyed'."
@@ -86,7 +87,7 @@ except ValueError:
     level_of_error_correction = 1
 
 print(
-    "Specify the data to encode in the QR code.\n  If it is a URL then hit enter on the next line to have a single data line."
+    "Specify the data to encode in the QR code.\n  If it is a URL then hit enter on the next line to have a single data line for the url:\n    https://etc.com.\n  If it is a telephone number then hit enter on the next line and input the single data line as:\n    TEL:+1-111-555-1212\n  For multiple lines of text just enter the number of lines you will need.  The script will prompt you for each line.\n  The QR code will automatically determine the best version to use."
 )
 i_num_lines = input("Enter number of lines (default single line): ")
 
@@ -103,7 +104,7 @@ for i in range(num_lines):
     if i < num_lines - 1:
         data += "\n"
 
-print("Data: ", data)
+print(f"Data:\n{data}")
 
 
 error_correction_v = qrcode.constants.ERROR_CORRECT_M
