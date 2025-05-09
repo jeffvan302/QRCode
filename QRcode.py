@@ -2,6 +2,7 @@
 
 # qrcode library details:
 # https://github.com/lincolnloop/python-qrcode
+# How QR Codes Work: https://www.qrcode.com/en/
 
 
 import qrcode
@@ -19,6 +20,23 @@ data += "Data Line 4\n"
 data = ""
 
 print("QR Code Generator\n")
+
+
+print("QR Code can store a contact card as a vCard.")
+print(
+    "  Each line of the vCard is a data line. The first line indicates the start of the vCARD."
+)
+
+print("  Example:")
+print("    BEGIN:VCARD")
+print("    VERSION:4.0")
+print("    FN:John Doe")
+print("    ORG:Company Name")
+print("    TEL;TYPE=WORK,VOICE:(111) 555-1212")
+print("    TEL;TYPE=CELL,VOICE:(111) 555-1212")
+print("    EMAIL:john.doe@example.com")
+print("    END:VCARD")
+print("  (Each line should not have any spaces in front.)")
 
 print("QR Code Size is determined by the version of code.")
 print("The higher the version, the more data it can hold.")
