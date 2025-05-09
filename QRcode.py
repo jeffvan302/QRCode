@@ -40,6 +40,16 @@ level_of_error_correction = 0
 
 
 print(
+    "QR Border Size\n  The border is the number of boxes (pixels) to use for the border.\n  The default is 4, which results in a wide enough border for seperation.\n  You could go very small to 1 or 0 and still get good results.\n  It depends on your application."
+)
+border_size_i = input("Enter border size (default 4): ")
+try:
+    border_size = int(border_size_i)
+except ValueError:
+    print("Invalid input. Using default border size (4).")
+    border_size = 4
+
+print(
     "QR Icons\n  If you want to place a small icon in the center of the QR code then,\n  use a higher level of error correction.\n  This will give you redundancy in the QR code.\n  Allowing the center to be 'destroyed'."
 )
 print("QR Code can have a level of error correction.")
@@ -107,7 +117,7 @@ qr = qrcode.QRCode(
     version=1,
     error_correction=error_correction_v,
     box_size=5,
-    border=4,
+    border=border_size,
 )
 
 
